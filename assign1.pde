@@ -6,6 +6,7 @@ int hpW ;
 int eX, eY ; 
 int eSpeedX ;
 int tX, tY ;
+
 void setup () {
   size(640,480) ; 
   bg1 = loadImage("img/bg1.png");
@@ -14,26 +15,34 @@ void setup () {
   enemy = loadImage("img/enemy.png");
   fighter = loadImage("img/fighter.png");
   treasure = loadImage("img/treasure.png");
+  
   //background
   bg1X = 0 ;
   bg1Y = 0 ;
   bg2X = 640-bg1X ;
   bg2Y = 0 ;
   bgSpeedX = 1 ;
+  
   //enemy
   eX = 0 ;
   eY = floor(random(0+30,height-50));
   eSpeedX = floor(random(3,5)) ;
+  
   //treasure
-  tX = floor(random(0,width));
+  tX = floor(random(0,width-50));
   tY = floor(random(0+30,height-30));
+  
   //hp
   hpW = floor(random(1,200));
   
 }
+
 void draw() {
   background(0);
-    
+  
+  //treasure
+  image(treasure,tX,tY);
+  
   //fighter
   image(fighter,width-60,height/2-20);
   
@@ -41,9 +50,6 @@ void draw() {
   image(enemy,eX,eY);
   eX += eSpeedX ;
   eX %= width ;
-  
-  //treasure
-  image(treasure,tX,tY);
   
   //hp
   noStroke();
