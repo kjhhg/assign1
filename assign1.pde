@@ -1,12 +1,10 @@
 PImage bg1, bg2, hp, enemy, fighter, treasure ;
-int bg1X, bg1Y ;
-int bg2X, bg2Y ;
+int bgX;
 int bgSpeedX ;
 int hpW ;
 int eX, eY ; 
 int eSpeedX ;
 int tX, tY ;
-
 void setup () {
   size(640,480) ; 
   bg1 = loadImage("img/bg1.png");
@@ -17,11 +15,7 @@ void setup () {
   treasure = loadImage("img/treasure.png");
   
   //background
-  bg1X = 0 ;
-  bg1Y = 0 ;
-  bg2X = 640-bg1X ;
-  bg2Y = 0 ;
-  bgSpeedX = 1 ;
+  bgX = 0 ;
   
   //enemy
   eX = 0 ;
@@ -29,20 +23,23 @@ void setup () {
   eSpeedX = floor(random(3,5)) ;
   
   //treasure
-  tX = floor(random(0,width-50));
+  tX = floor(random(0,width));
   tY = floor(random(0+30,height-30));
   
   //hp
   hpW = floor(random(1,200));
   
 }
-
 void draw() {
-  background(0);
+  //background(0);
+  //BACKGROUND
   
-  //treasure
-  image(treasure,tX,tY);
-  
+ //background
+  image(bg1,bgX,0);
+  image(bg2,bgX-640,0);
+  bgX++;
+  bgX %= 640;
+      
   //fighter
   image(fighter,width-60,height/2-20);
   
@@ -50,6 +47,9 @@ void draw() {
   image(enemy,eX,eY);
   eX += eSpeedX ;
   eX %= width ;
+  
+  //treasure
+  image(treasure,tX,tY);
   
   //hp
   noStroke();
