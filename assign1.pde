@@ -31,14 +31,15 @@ void setup () {
   
 }
 void draw() {
-  //background(0);
-  //BACKGROUND
   
  //background
   image(bg1,bgX,0);
   image(bg2,bgX-640,0);
   bgX++;
   bgX %= 640;
+  
+  //treasure
+  image(treasure,tX,tY);
       
   //fighter
   image(fighter,width-60,height/2-20);
@@ -47,9 +48,6 @@ void draw() {
   image(enemy,eX,eY);
   eX += eSpeedX ;
   eX %= width ;
-  
-  //treasure
-  image(treasure,tX,tY);
   
   //hp
   noStroke();
