@@ -23,7 +23,7 @@ void setup () {
   eSpeedX = floor(random(3,5)) ;
   
   //treasure
-  tX = floor(random(0,width));
+  tX = floor(random(0,width-30));
   tY = floor(random(0+30,height-30));
   
   //hp
